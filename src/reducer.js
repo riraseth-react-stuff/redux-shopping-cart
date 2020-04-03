@@ -1,11 +1,18 @@
-import { INCREASE, DECREASE } from './actions';
+import { INCREASE, DECREASE, CLEAR_CART, REMOVE } from './actions';
 
 export const reducer = (state, action) => {
   switch (action.type) {
     case DECREASE:
-      return { ...state, count: state.count - 1 };
+      console.log('increase');
     case INCREASE:
-      return { ...state, count: state.count + 1 };
+      console.log('decrease');
+    case CLEAR_CART:
+      return { ...state, cart: [] };
+    case REMOVE:
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
+      };
     default:
       return state;
   }
