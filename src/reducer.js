@@ -6,8 +6,16 @@ import {
   GET_TOTALS,
   TOGGLE_AMOUNT,
 } from './actions';
+// items
+import cartItems from './cart-items';
+//initial store
+const initialStore = {
+  cart: cartItems,
+  total: 0,
+  amount: 0,
+};
 
-export const reducer = (state, action) => {
+export const reducer = (state = initialStore, action) => {
   switch (action.type) {
     // not used //
     case DECREASE:
