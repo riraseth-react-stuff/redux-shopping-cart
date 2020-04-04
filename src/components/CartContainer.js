@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import CartItem from './CartItem';
 import { connect } from 'react-redux';
-import { CLEAR_CART, GET_TOTALS } from '../actions';
-const CartContainer = ({ cart = [], total, dispatch }) => {
+import { clearCart, getTotals } from '../actions';
+const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
   useEffect(() => {
-    dispatch({ type: GET_TOTALS });
+    getTotals();
   });
   if (cart.length === 0) {
     return (
@@ -37,10 +37,7 @@ const CartContainer = ({ cart = [], total, dispatch }) => {
             total <span>${total}</span>
           </h4>
         </div>
-        <button
-          className="btn clear-btn"
-          onClick={() => dispatch({ type: CLEAR_CART })}
-        >
+        <button className="btn clear-btn" onClick={clearCart}>
           clear cart
         </button>
       </footer>
@@ -53,4 +50,9 @@ const mapStateToProps = ({ cart, total }) => ({
   total,
 });
 
-export default connect(mapStateToProps)(CartContainer);
+const mapDispatchToProps = {
+  clearCart,
+  getTotals,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
