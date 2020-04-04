@@ -8,6 +8,9 @@ import CartContainer from './components/CartContainer';
 // store
 import { createStore } from 'redux';
 
+// devtools
+import { devToolsEnhancer } from 'redux-devtools-extension';
+
 // import reducer
 import reducer from './reducer';
 
@@ -22,7 +25,7 @@ import { Provider } from 'react-redux';
 // reducer returns updated or old state
 
 // setting up store
-const store = createStore(reducer);
+const store = createStore(reducer, devToolsEnhancer());
 
 function App() {
   // cart setup
