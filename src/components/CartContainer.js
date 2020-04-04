@@ -5,7 +5,7 @@ import { clearCart, getTotals } from '../actions';
 const CartContainer = ({ cart = [], total, clearCart, getTotals }) => {
   useEffect(() => {
     getTotals();
-  });
+  }, [cart, getTotals]);
   if (cart.length === 0) {
     return (
       <section className="cart">
