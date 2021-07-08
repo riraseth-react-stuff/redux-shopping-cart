@@ -33,7 +33,7 @@ function App() {
   return (
     <Provider store={store}>
       <Navbar />
-      <CartContainer />>
+      <CartContainer />
     </Provider>
   );
 }
